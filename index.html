@@ -18,74 +18,20 @@
 
   <div class="container">
     <div class="jumbotron">
-      <h1>Hot Restaurant</h1>
-      <h3>The greatest resource in the galaxy for a place to eat!</h3>
+      <h1 class ="text-center"><span class="fa fa-fire"></span>Hot Restaurant</h1>
+      <h3 class ="text-center">The greatest resource in the galaxy for a place to eat!</h3>
+      <h4 class ="text-center">We only have 5 tables! Book your seat before they are gone!</h4>
       <hr>
-      <a href="/add"><button class="btn btn-danger btn-lg"><span class="fa fa-plus"></span> Add New
-          Character</button></a>
-      <a href="/api/characters"><button class="btn btn-danger btn-lg"><span
-            class="fa fa-eye"></span> All Characters</button></a>
-    </div>
-    <div class="row">
-
-      <div class="col-12">
-
-        <div class="card mb-4">
-          <div class="card-header">
-            <h3><strong>Character Search</strong></h3>
-          </div>
-          <div class="card-body">
-            <input type="text" id="character-search" class="form-control">
-            <br>
-            <div class="text-right">
-              <button type="submit" class="btn btn-primary btn-md" id="search-btn"><span
-                  class="fa fa-search"></span> Search
-                Your Feelings. You know it is true.</button>
-
-            </div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="card-header">
-            <h3><strong>Character Statistics</strong></h3>
-          </div>
-          <div class="card-body">
-            <h2 id="name">Yoda</h2>
-            <div id="stats">
-              <h3><strong>Role:</strong> <span id="role">Jedi Master</span></h3>
-              <h3><strong>Age:</strong> <span id="age">900</span></h3>
-              <h3><strong>Force Points:</strong> <span id="force-points">2000</span></h3>
-            </div>
-          </div>
-        </div>
+      <div class ="text-center">
+        <a href="/make"><button id="make-res" class="btn btn-primary btn"><span class="fa fa-plus"></span> Add New Reservation </button></a>
+        <a href="/view"><button id="view-tables" class="btn btn-primary btn"><span class="fas fa-chair"></span> View Tables </button></a>
+        <a href="/api/reserve"><button id="view-reservations" class="btn btn-primary btn my-2"> API Reservations</button></a>
+        <a href="/api/waitlist"><button id="view-waitlist" class="btn btn-primary btn my-2"> API Wait List</button></a>
       </div>
     </div>
   </div>
 
-  <script type="text/javascript">
-    const $searchBtn = $('#search-btn')
-    const $searchInput = $('#character-search')
-    
-    $searchBtn.on('click', function() {
-      const query = $searchInput.val().trim()
-      $.get(`/api/characters/${query}`)
-       .then(response => {
-        if (response) {
-          $("#stats").show();
-          $("#name").text(response.name);
-          $("#role").text(response.role);
-          $("#age").text(response.age);
-          $("#force-points").text(response.forcePoints);
-        }
-        else {
-          $("#name").text("The force is not strong with this one. Your character was not found.");
-          $("#stats").hide();
-        }
-       })
-    })
-
-  </script>
+  <script src ="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/js/all.min.js"></script>
 
 </body>
 </html>
